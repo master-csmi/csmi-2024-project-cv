@@ -1,174 +1,145 @@
 = GitHub Classroom Assignment: Create Your CV
 :experimental: true
+:icons: font
 
-This assignment will guide you through creating your own CV using LaTeX and GitHub. You will use a GitHub repository template with a pre-configured `simplehipstercv.cls` file. By the end of this assignment, you will have your personalized CV hosted on GitHub, and you will create a release.
-
-Please note:
-
-- You must use **VSCode** or https://code.visualstudio.com/docs/remote/codespaces[**CodeSpaces**] (for this assignment.
-- Commit regularly and push changes to GitHub frequently.
-- You **must** replace the provided photo with your own.
-
-NOTE: **CodeSpaces** is a cloud-based development environment based on VSCode that allows you to develop entirely in the cloud via your browser. It provides a full-featured development environment that can be accessed from anywhere. If you prefer to use CodeSpaces, you can open the repository in CodeSpaces by clicking the `CodeSpaces` button on the repository page. The advantage of using CodeSpaces is that you don't need to install any software on your local machine.
+This assignment guides you to create a professional CV in **LaTeX** using **Git** and **GitHub** from **VS Code** (locally or in **GitHub Codespaces**). You will personalize a provided template and publish your final PDF via a **GitHub Release**.
 
 toc::[]
 
+[NOTE]
+====
+You may work **locally in VS Code** or **entirely in the browser** using https://code.visualstudio.com/docs/remote/codespaces[GitHub Codespaces]. Codespaces gives you a ready-to-use dev environment without installing LaTeX locally.
+====
 
-TIP: you can preview this README in VSCode using the **AsciiDoctor** VSCode extension and click the preview button on the top right of the VSCode window once the extension is installed image:vscode-asciidoc-preview.png[inline]. The extension is automatically recommended when you open the project in VSCode.
+TIP: You can preview this README in VS Code using the *AsciiDoctor* extension (auto-recommended). After installing, click the preview button (top-right). image:vscode-asciidoc-preview.png[inline]
+
+== What you will learn
+* Core Git workflow: clone, branch, commit, push, pull request, merge.
+* Working with **GitHub Classroom** assignments.
+* Editing and compiling LaTeX in **VS Code** (via *LaTeX Workshop*).
+* Packaging deliverables using **GitHub Releases**.
+
+== Requirements
+* GitHub account and the **Classroom invitation link** (provided by your instructor).
+* **VS Code** locally _or_ **GitHub Codespaces**.
+* Replace the sample photo with **your own** (mandatory).
+* Commit frequently with **meaningful messages**.
 
 == Getting Started
 
-1. **Accept the Assignment**: 
-   - Go to the GitHub Classroom invitation link provided by your instructor.
-   - Click the btn:[Accept this assignment] button.
+1. **Accept the assignment**
+   * Open the Classroom invitation link and click btn:[Accept this assignment].
+   * A private repository will be created for you.
 
-2. **Clone the Repository**:
-   - Once your repository is created, navigate to your repository page on GitHub.
-   - Copy the repository URL and clone it to your local machine using Git from VSCode.
-
+2. **Open your repository**
+   * **Option A — Codespaces (recommended):**
+     * On your repo page → btn:[Code] → tab:[Codespaces] → btn:[Create codespace on main].
+   * **Option B — Local VS Code:**
+     * Clone the repository and open the folder in VS Code:
++
 [source,console]
 ----
-$ git clone https://github.com/<your-username>/<repository-name>.git
+git clone https://github.com/<your-username>/<repository-name>.git
+code <repository-name>
 ----
 
-Replace the URL with the proper one.
+== Repository tour
+You should see at least:
+* `main.tex` — main LaTeX source for your CV.
+* `simplehipstercv.cls`, `simplehipstercv.sty` — class/style files.
+* Images (e.g., `jack.jpg`) — replace with your own portrait.
 
-3. **Open the Project in VSCode**:
+[IMPORTANT]
+====
+**Photo:** Replace `jack.jpg` with your own photo **or** update the LaTeX path if you change the filename.
+====
 
-- Open VSCode on your machine.
-- From the `File` menu, click btn:[Open Folder], and select the folder of the cloned repository.
+== Edit your CV (LaTeX)
+1. Open `main.tex` in VS Code and update sections:
+   * Name, Title, Contact
+   * Education / Degrees
+   * Skills & Programming Languages
+   * Experience / Projects
+   * Languages & Certifications
+2. Replace the profile photo:
++
+[source,latex]
+----
+\includegraphics[width=1.1\linewidth]{jack.jpg} % rename or update path if needed
+----
 
+== Preview / Build the PDF
+* Install **LaTeX Workshop** (auto-recommended on open) and run “LaTeX Workshop: Build LaTeX project” from the Command Palette (btn:[Ctrl+Shift+P] / btn:[Cmd+Shift+P] on macOS).
+* Or build from a terminal:
++
 [source,console]
 ----
-$ code <repository-name>
+pdflatex main.tex
 ----
+* Repeat until the PDF builds cleanly (review warnings/errors).
 
-You should see the following files:
+[NOTE]
+====
+If building **locally**, ensure a LaTeX distribution is installed (e.g., TeX Live/MiKTeX). With **Codespaces**, the environment can be preconfigured by your instructor or you can install what you need inside the container.
+====
 
-- `main.tex`: This is the main LaTeX file you will modify.
-- `simplehipstercv.cls` and `simplehipstercv.sty`: These are the LaTeX class and style files that define the layout.
-- Several image files: You **must** replace the `jack.jpg` image with your own.
-
-== Modifying Your CV
-
-1. **Open the `main.tex` file in VSCode**:
-   - In the Explorer panel in VSCode, open `main.tex`.
-
-2. **Update Your Personal Information**:
-   Modify the following sections in `main.tex` to reflect your own information:
-   - Name
-   - Title
-   - Contact information
-   - Degrees and Certifications
-   - Skills, Programming Languages
-   - Work Experience
-   - Languages
-   - Any other sections that apply to your CV.
-
-3. **Replace the Profile Photo**:
-   - Replace the image `jack.jpg` in the project directory with your own photo, making sure it’s named exactly the same (e.g., `jack.jpg`).
-   - Ensure your photo is in a supported format like `.jpg`, `.jpeg`, or `.png`.
-   - Update the LaTeX command in `main.tex` to use the new photo (if the filename changes):
-
-[source]
-----
-\includegraphics[width=1.1\linewidth]{jack.jpg} % Ensure your image is named 'jack.jpg'
-----
-
-== Committing and Pushing Your Changes
-
-You must commit changes regularly to track your progress. Aim to commit after each significant modification to your CV (e.g., after updating a section or adding a photo).
-
-1. **Stage and Commit**:
-   After making changes, stage the changes and commit them using VSCode's built-in Git tools or from the terminal.
-
-- In VSCode, go to the `Source Control` view (click the `Source Control` icon on the sidebar).
-- Stage your changes by clicking the `+` next to each file.
-- Write a meaningful commit message in the input box (e.g., "Updated CV details" or "Added profile picture").
-
-Alternatively, you can use the terminal in VSCode:
-
+== Git workflow to demonstrate
+1. Create a short-lived feature branch:
++
 [source,console]
 ----
-$ git add .
-$ git commit -m "Updated personal information"
+git checkout -b feature/fill-education
 ----
-
-2. **Push Changes to GitHub**:
-   Push your committed changes to the remote repository on GitHub. You should do this frequently to back up your work.
-
-In VSCode, go to the `Source Control` panel and click btn:[Push].
-
-Alternatively, from the terminal:
-
+2. Make small, focused commits with clear messages:
++
 [source,console]
 ----
-$ git push origin main
+git add main.tex
+git commit -m "Add education section with MSc details"
+git push -u origin feature/fill-education
 ----
+3. Open a **Pull Request** on GitHub → review (self/peer) → **Merge** into `main`.
+4. Repeat once more for another part (e.g., experience or skills).
 
-== Preview Your CV
+[IMPORTANT]
+====
+Commit **early and often**. Push regularly to back up your work.
+====
 
-To ensure your CV is correctly formatted, you can compile the LaTeX file into a PDF. VSCode has LaTeX plugins, such as **LaTeX Workshop**, that can compile the document directly.
+== Create a Release (final packaging)
+1. Ensure `main.pdf` is up to date and error-free.
+2. On GitHub → tab:[Releases] → btn:[Draft a new release].
+3. Set:
+   * **Tag:** `v1.0`
+   * **Title:** `Final CV`
+   * **Notes:** brief summary of what you finalized.
+4. **Attach** your `main.pdf` as a release asset.
+5. Click btn:[Publish release].
 
+== Submission
+Submit the **Release URL** in the LMS (or as instructed).
 
-https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop[> Install **LaTeX Workshop**] from the VSCode extension marketplace and then compile the `main.tex` file by opening the Command Palette (btn:[Ctrl+Shift+P] or btn:[Cmd+Shift+P] on macOS) and typing `LaTeX Workshop: Build LaTeX project`.
+== Grading checklist (100 pts)
 
-TIP: **LaTeX Workshop** is a VSCode extension will be automatically recommended for installation when you open the project in VSCode.
+* Git hygiene (30 pts): ≥6 meaningful commits; clear messages; one small PR merged.
+* Repository quality (20 pts): clean tree; sensible `.gitignore`; no huge binaries in history.
+* CV content & structure (30 pts): complete, concise sections; consistent formatting.
+* Release packaging (20 pts): `v1.0` release with `main.pdf` attached.
 
-Alternatively, compile it using the terminal:
+== Common issues & fixes
 
-[source,console]
-----
-$ pdflatex main.tex
-----
+* **Image not visible:** check filename/extension; ensure the path in `\includegraphics{}` matches; avoid spaces in names.
+* **LaTeX fails to compile:** read the log for missing packages or typos (unbalanced braces, bad characters). Rebuild after each fix.
+* **Push/auth errors:** verify GitHub sign-in; confirm `origin` URL; run `git status` to check branch and staged files.
+* **Accents/UTF-8:** ensure your source is UTF-8 encoded; include proper LaTeX packages if needed.
 
-Check the output PDF and ensure everything looks correct.
-
-== Regular Commits and Progress
-
-Throughout this assignment, you are expected to:
-
-- Commit **after every major change** (e.g., after updating your photo, updating work experience, or modifying the structure).
-- Push your changes to GitHub regularly to ensure your repository is always up to date.
-
-== Create a Release
-
-Once you’re satisfied with your CV, you will create a release on GitHub. A release allows you to package your final PDF version of your CV for download.
-
-1. **Generate the Final PDF**:
-   Compile your `main.tex` into a final PDF.
-
-2. **Go to Your Repository on GitHub**:
-   - Navigate to your GitHub repository.
-
-3. **Create a New Release**:
-   - Click the btn:[Releases] tab.
-   - Click btn:[Draft a new release].
-
-4. **Fill in the Release Information**:
-   - Tag the release (e.g., `v1.0`).
-   - Give it a title (e.g., `Final CV Release`).
-   - In the description, mention what you've updated or finalized.
-
-5. **Attach the PDF**:
-   - Upload your final CV PDF (e.g., `main.pdf`) as an asset for the release.
-
-6. **Publish the Release**:
-   - Click btn:[Publish release] to finalize it.
-
-== Submission Instructions
-
-Once your release is published, submit the release link to your instructor as your final deliverable.
-
-== Troubleshooting
-
-- **Latex Compilation Issues**: Ensure that all necessary LaTeX packages are installed. Check for missing packages in the error logs.
-- **Git Issues**: If you encounter issues with Git commands or pushing, make sure you're authenticated correctly, or refer to Git's troubleshooting guides.
-- **VSCode Extensions**: Make sure **LaTeX Workshop** and **Git** extensions are installed for easy integration with LaTeX and version control.
+== Good practice
+* Keep your CV to **1–2 pages**; prioritize impact and recency.
+* Use action verbs and metrics (e.g., “Implemented…, reduced runtime by 35% on EuroHPC”).
+* Avoid sensitive personal data. Ensure the photo is your own and that you have rights to any included assets.
 
 == Resources
-
-- GitHub Docs: https://docs.github.com
-- VSCode Docs: https://code.visualstudio.com/docs
-- Overleaf LaTeX Editor (optional): https://www.overleaf.com
-- LaTeX Wikibook: https://en.wikibooks.org/wiki/LaTeX
+* GitHub Docs — https://docs.github.com
+* VS Code Docs — https://code.visualstudio.com/docs
+* LaTeX Workshop — https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop
+* LaTeX Wikibook — https://en.wikibooks.org/wiki/LaTeX
